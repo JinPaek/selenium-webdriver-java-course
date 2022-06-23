@@ -29,6 +29,6 @@ jobs:
         working-directory: webdriver_java
         run: mvn test
       - name: Collect build data
-        if: alway()
+        if: always()
         run: expr $(date +%s) - ${START_TIME}
 # What steps within each job
