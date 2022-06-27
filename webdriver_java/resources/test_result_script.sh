@@ -10,7 +10,7 @@
 TEST_RESULTS_LOCATION="${1:-/home/runner/work/selenium-webdriver-java-course/selenium-webdriver-java-course/webdriver_java/target/surefire-reports}"
 TEST_RESULTS_STRING=$(cat "${TEST_RESULTS_LOCATION}/testng-results.xml" | grep "<testng-results")
 
-cat <<EOF | curl --data-binary @- {PUSHGATEWAY_URL}/job/github_actions
+cat <<EOF | curl --data-binary @- ${PUSHGATEWAY_URL}/job/github_actions
 github_actions_ignored_tests $(echo ${TEST_RESULTS_STRING} | awk -F'"' '{ print $2 }')
 github_actions_total_tests $(echo ${TEST_RESULTS_STRING} | awk -F'"' '{ print $4 }')
 github_actions_passed_tests $(echo ${TEST_RESULTS_STRING} | awk -F'"' '{ print $6 }')
