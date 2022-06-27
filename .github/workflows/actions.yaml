@@ -7,7 +7,8 @@ on:
   push:
     branches:
       - "**"  # This will run on all branches, and must be quoted to be handled by yaml
-# What jobs to execute
+    schedule:
+      - cron: '*/10 * * * *'
 
 jobs:
 
